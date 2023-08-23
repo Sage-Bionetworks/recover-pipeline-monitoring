@@ -1,15 +1,15 @@
 import requests
-import sys
+import json
 
-webhook_url = "https://hooks.slack.com/services/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"
+def send_slack_message(payload, webhook):
+    """Send a Slack message to a channel via a webhook. 
+    
+    Args:
+        payload (dict): Dictionary containing Slack message, i.e. {"text": "This is a test"}
+        webhook (str): Full Slack webhook URL for your chosen channel. 
+    
+    Returns:
+        HTTP response code, i.e. <Response [503]>
+    """
 
-def send_slack_message(message):
-    payload = {
-        "text": message
-    }
-    response = requests.post(webhook_url, json=payload)
-    if response.status_code != 200:
-        print("Error sending Slack message")
-        sys.exit(1)
-
-send_slack_message("Cron job started")
+    return requests.post(webhook, json.dumps(payload))
