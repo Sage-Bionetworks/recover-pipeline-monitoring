@@ -27,7 +27,7 @@ python3 /path/to/send_slack_message.py '{"text": "second command exited with an 
 ```sh
 0 9 * * * docker pull ghcr.io/sage-bionetworks/<pipeline>:main && \
 python3 /home/ec2-user/recover-pipeline-monitoring/send_slack_message.py '{"text": "<pipeline>: cron job started"}' "<webhook>" && \
-docker run -e AWS_SYNAPSE_TOKEN=<token> -e SYNAPSE_AUTH_TOKEN=<token> ghcr.io/sage-bionetworks/<pipeline>:main > /home/ec2-user/output.log 2> /home/ec2-user/error.log && \
+docker run --rm -e AWS_SYNAPSE_TOKEN=<token> -e SYNAPSE_AUTH_TOKEN=<token> ghcr.io/sage-bionetworks/<pipeline>:main > /home/ec2-user/output.log 2> /home/ec2-user/error.log && \
 python3 /home/ec2-user/recover-pipeline-monitoring/send_slack_message.py '{"text": "<pipeline>: cron job succeeded"}' "<webhook>" || \
 python3 /home/ec2-user/recover-pipeline-monitoring/send_slack_message.py '{"text": "<pipeline>: cron job failed"}' "<webhook>"
 ```
