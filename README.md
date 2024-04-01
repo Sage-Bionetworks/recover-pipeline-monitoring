@@ -32,6 +32,8 @@ python3 /home/ec2-user/recover-pipeline-monitoring/send_slack_message.py '{"text
 python3 /home/ec2-user/recover-pipeline-monitoring/send_slack_message.py '{"text": "<pipeline>: cron job failed"}' "<webhook>"
 ```
 
+**Note:** You can customize your `docker run ...` command with optional flags like `--rm`, `--i`, `--d`, etc. for your specific use case.
+
 ### Store Logs in Synapse
 
 ```sh
